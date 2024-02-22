@@ -7,7 +7,7 @@ Have GITHUB_ACCESS_TOKEN and OPENAI_API_KEY handy (the former is needed just for
 # Usage: 
 
 ```shell
-python script.py <repository_name> <version_hash> <directory>
+python main.py <repository_name> <version_hash> <directory>
 ```
 
 # Example:
