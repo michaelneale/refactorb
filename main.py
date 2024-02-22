@@ -74,7 +74,7 @@ def process_directory(directory, repo_name, version_hash):
         for file in files:
             if file.endswith(LANGUAGE_EXTENSIONS):
                 file_path = os.path.join(root, file)
-                print(f"Processing {file_path}...")
+                print(f"Refactoring {file_path}...")
                 diff = get_diff(repo_name, version_hash, file_path)
                 refactored_file_content = apply_changes_to_file(diff, file_path)
                 with open(file_path, 'w') as f:
