@@ -1,6 +1,6 @@
 # RefactorB
 
-The B stands for bargain!
+Use diffs to prompt a model to refactory your code. Be lazy. 
 
 Have GITHUB_ACCESS_TOKEN and OPENAI_API_KEY handy (the former is needed just for rate limits, you can skip it if you like).
 
