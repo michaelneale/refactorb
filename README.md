@@ -2,6 +2,7 @@
 
 The B stands for bargain!
 
+Have GITHUB_ACCESS_TOKEN and OPENAI_API_KEY handy (the former is needed just for rate limits, you can skip it if you like).
 
 # Usage: 
 
