@@ -5,7 +5,7 @@ import re
 from openai import OpenAI
 
 # Constant for programming language extensions
-LANGUAGE_EXTENSIONS = ('.ts', '.js', '.dart', '.go', '.java', '.kt')
+LANGUAGE_EXTENSIONS = ('.ts', '.js', '.dart', '.go', '.java', '.kt', '.html', '.tsx', '.jsx')
 
 def get_diff(repo_name, version_hash, file_path):
     # Construct the URL for the diff
@@ -69,16 +69,26 @@ def apply_changes_to_file(diff, file_path):
 
     return refactored_file_content
 
-def process_directory(directory, repo_name, version_hash):
-    for root, dirs, files in os.walk(directory):
-        for file in files:
-            if file.endswith(LANGUAGE_EXTENSIONS):
-                file_path = os.path.join(root, file)
-                print(f"Refactoring {file_path}...")
-                diff = get_diff(repo_name, version_hash, file_path)
-                refactored_file_content = apply_changes_to_file(diff, file_path)
-                with open(file_path, 'w') as f:
-                    f.write(refactored_file_content)
+def process_directory(path, repo_name, version_hash):
+    if os.path.isfile(path):
+        # Handle a single file
+        if path.endswith(LANGUAGE_EXTENSIONS):
+            print(f"Refactoring {path}...")
+            diff = get_diff(repo_name, version_hash, path)
+            refactored_file_content = apply_changes_to_file(diff, path)
+            with open(path, 'w') as f:
+                f.write(refactored_file_content)
+    else:
+        # Handle a directory
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if file.endswith(LANGUAGE_EXTENSIONS):
+                    file_path = os.path.join(root, file)
+                    print(f"Refactoring {file_path}...")
+                    diff = get_diff(repo_name, version_hash, file_path)
+                    refactored_file_content = apply_changes_to_file(diff, file_path)
+                    with open(file_path, 'w') as f:
+                        f.write(refactored_file_content)
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
