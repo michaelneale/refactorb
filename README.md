@@ -1,6 +1,7 @@
 # RefactorB
 
-Use diffs to prompt a model to refactory your code. Be lazy. 
+Auto update your code to a new version of an API, by pointing it at another repo that has already done that migration. 
+
 
 Have GITHUB_ACCESS_TOKEN and OPENAI_API_KEY handy (the former is needed just for rate limits, you can skip it if you like).
 
